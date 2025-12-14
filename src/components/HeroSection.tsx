@@ -79,7 +79,7 @@ export default function HeroSection() {
 
             {/* Main Headline */}
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              A Next Level Organization that develops 
+              A Next Level Organization that development to the house
               <span className="text-blue-600"> execution strategy</span>
             </h1>
             
