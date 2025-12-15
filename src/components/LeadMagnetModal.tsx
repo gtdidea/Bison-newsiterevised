@@ -58,13 +58,29 @@ export default function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProp
   };
 
   const handleSubmit = async () => {
-    // Here you would typically send data to your backend
-    console.log('Survey Data:', surveyData);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitted(true);
+    try {
+      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-assessment`;
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(surveyData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to submit assessment');
+      }
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting assessment:', error);
+      alert('There was an error submitting your assessment. Please try again or contact support@thebisongroup.io');
+    }
   };
 
   const downloadReport = () => {
