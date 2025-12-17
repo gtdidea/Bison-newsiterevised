@@ -73,13 +73,16 @@ export default function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProp
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.error || 'Failed to submit assessment');
+        const errorMsg = result.error || 'Failed to submit assessment';
+        console.error('Assessment submission error:', errorMsg);
+        throw new Error(errorMsg);
       }
 
       setIsSubmitted(true);
     } catch (error) {
       console.error('Error submitting assessment:', error);
-      alert('There was an error submitting your assessment. Please try again or contact support@thebisongroup.io');
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      alert(`There was an error submitting your assessment: ${errorMessage}\n\nPlease try again or contact support@thebisongroup.io`);
     }
   };
 

@@ -62,6 +62,10 @@ Deno.serve(async (req: Request) => {
   try {
     const assessmentData: AssessmentData = await req.json();
 
+    if (!assessmentData.name || !assessmentData.email || !assessmentData.company) {
+      throw new Error('Missing required fields: name, email, or company');
+    }
+
     const insights = generatePersonalizedInsights(assessmentData);
     const reportContent = `
 STRATEGIC ASSESSMENT REPORT
@@ -87,13 +91,13 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
         user_name: assessmentData.name,
         user_email: assessmentData.email,
         company: assessmentData.company,
-        role: assessmentData.role,
-        industry: assessmentData.industryChallenge,
-        challenges: [assessmentData.industryChallenge],
-        strategic_priorities: [assessmentData.strategicPriority],
-        team_size: assessmentData.teamSize,
-        current_tools: assessmentData.currentTools,
-        biggest_pain_point: assessmentData.biggestPainPoint,
+        role: assessmentData.role || 'Not specified',
+        industry: assessmentData.industryChallenge || 'Not specified',
+        challenges: assessmentData.industryChallenge ? [assessmentData.industryChallenge] : [],
+        strategic_priorities: assessmentData.strategicPriority ? [assessmentData.strategicPriority] : [],
+        team_size: assessmentData.teamSize || 'Not specified',
+        current_tools: assessmentData.currentTools || [],
+        biggest_pain_point: assessmentData.biggestPainPoint || 'Not specified',
         report_content: reportContent,
       })
       .select()
