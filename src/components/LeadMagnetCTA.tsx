@@ -14,7 +14,7 @@ export default function LeadMagnetCTA() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#355E3B] text-[#969233] hover:bg-[#355E3B]/90">
+              <Badge className="mb-4 bg-[#355E3B] text-white hover:bg-[#355E3B]/90">
                 FREE Strategic Assessment
               </Badge>
               <h2 className="text-4xl font-bold mb-4">
@@ -95,7 +95,7 @@ export default function LeadMagnetCTA() {
 
                 <Button
                   size="lg"
-                  className="bg-[#355E3B] hover:bg-[#355E3B]/90 text-[#969233] px-8 py-4 text-lg"
+                  className="bg-[#355E3B] hover:bg-[#355E3B]/90 text-white px-8 py-4 text-lg"
                   onClick={() => setIsModalOpen(true)}
                 >
                   Start My Strategic Assessment

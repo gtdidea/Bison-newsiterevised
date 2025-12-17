@@ -26,7 +26,7 @@ export default function HeroSection() {
           <div className="relative">
             <button
               onClick={handleAssessmentClick}
-              className="bg-[#355E3B] text-[#969233] px-6 py-3 rounded-lg shadow-lg transform rotate-3 hover:rotate-0 transition-all duration-300 cursor-pointer border-2 border-[#969233] hover:shadow-xl active:scale-95"
+              className="bg-[#355E3B] text-white px-6 py-3 rounded-lg shadow-lg transform rotate-3 hover:rotate-0 transition-all duration-300 cursor-pointer border-2 border-[#969233] hover:shadow-xl active:scale-95"
             >
               <div className="flex items-center space-x-2">
                 <Gift className="h-4 w-4" />
@@ -52,7 +52,7 @@ export default function HeroSection() {
           <div className="max-w-4xl mx-auto">
             {/* Strategic Assessment Announcement */}
             <div className="mb-8">
-              <Badge className="mb-4 bg-[#355E3B] hover:bg-[#355E3B]/90 text-[#969233] px-4 py-2 text-sm font-semibold">
+              <Badge className="mb-4 bg-[#355E3B] hover:bg-[#355E3B]/90 text-white px-4 py-2 text-sm font-semibold">
                 🎯 NEW: Free Strategic Assessment Available
               </Badge>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 mb-6">
@@ -65,7 +65,7 @@ export default function HeroSection() {
                 </p>
                 <Button
                   size="lg"
-                  className="bg-[#355E3B] hover:bg-[#355E3B]/90 text-[#969233] px-8 py-3 text-lg font-semibold"
+                  className="bg-[#355E3B] hover:bg-[#355E3B]/90 text-white px-8 py-3 text-lg font-semibold"
                   onClick={handleAssessmentClick}
                 >
                   Start Free Assessment Now
