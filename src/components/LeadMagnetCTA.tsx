@@ -10,11 +10,11 @@ export default function LeadMagnetCTA() {
 
   return (
     <>
-      <section className="py-16 bg-gradient-to-br from-red-50 to-orange-50">
+      <section className="py-16 bg-gradient-to-br from-slate-50 to-green-50">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-red-100 text-red-800 hover:bg-red-200">
+              <Badge className="mb-4 bg-[#355E3B] text-[#969233] hover:bg-[#355E3B]/90">
                 FREE Strategic Assessment
               </Badge>
               <h2 className="text-4xl font-bold mb-4">
@@ -28,10 +28,10 @@ export default function LeadMagnetCTA() {
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <Card className="border-2 border-red-200 shadow-lg">
+                <Card className="border-2 border-[#969233] shadow-lg">
                   <CardHeader>
                     <CardTitle className="flex items-center text-2xl">
-                      <FileText className="mr-3 h-6 w-6 text-red-600" />
+                      <FileText className="mr-3 h-6 w-6 text-[#969233]" />
                       Your Personalized Strategic Report
                     </CardTitle>
                   </CardHeader>
@@ -83,8 +83,8 @@ export default function LeadMagnetCTA() {
 
               <div className="text-center">
                 <div className="mb-6">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-red-100 rounded-full mb-4">
-                    <FileText className="h-10 w-10 text-red-600" />
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-[#355E3B]/20 rounded-full mb-4">
+                    <FileText className="h-10 w-10 text-[#355E3B]" />
                   </div>
                   <h3 className="text-2xl font-bold mb-2">Ready in 2 Minutes</h3>
                   <p className="text-muted-foreground mb-6">
@@ -95,7 +95,7 @@ export default function LeadMagnetCTA() {
 
                 <Button
                   size="lg"
-                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg"
+                  className="bg-[#355E3B] hover:bg-[#355E3B]/90 text-[#969233] px-8 py-4 text-lg"
                   onClick={() => setIsModalOpen(true)}
                 >
                   Start My Strategic Assessment
@@ -120,15 +120,15 @@ export default function LeadMagnetCTA() {
             <div className="mt-12 text-center">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-red-600">2,500+</div>
+                  <div className="text-3xl font-bold text-[#355E3B]">2,500+</div>
                   <div className="text-sm text-muted-foreground">Assessments Completed</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-red-600">94%</div>
+                  <div className="text-3xl font-bold text-[#355E3B]">94%</div>
                   <div className="text-sm text-muted-foreground">Found Actionable Insights</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-red-600">$2.3M</div>
+                  <div className="text-3xl font-bold text-[#355E3B]">$2.3M</div>
                   <div className="text-sm text-muted-foreground">Average ROI Increase</div>
                 </div>
               </div>

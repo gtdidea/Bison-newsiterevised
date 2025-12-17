@@ -26,7 +26,7 @@ export default function HeroSection() {
           <div className="relative">
             <button
               onClick={handleAssessmentClick}
-              className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg shadow-lg transform rotate-3 hover:rotate-0 transition-all duration-300 cursor-pointer border-2 border-red-400 hover:shadow-xl active:scale-95"
+              className="bg-[#355E3B] text-[#969233] px-6 py-3 rounded-lg shadow-lg transform rotate-3 hover:rotate-0 transition-all duration-300 cursor-pointer border-2 border-[#969233] hover:shadow-xl active:scale-95"
             >
               <div className="flex items-center space-x-2">
                 <Gift className="h-4 w-4" />
@@ -52,20 +52,20 @@ export default function HeroSection() {
           <div className="max-w-4xl mx-auto">
             {/* Strategic Assessment Announcement */}
             <div className="mb-8">
-              <Badge className="mb-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-sm font-semibold">
+              <Badge className="mb-4 bg-[#355E3B] hover:bg-[#355E3B]/90 text-[#969233] px-4 py-2 text-sm font-semibold">
                 🎯 NEW: Free Strategic Assessment Available
               </Badge>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 mb-6">
                 <div className="flex items-center justify-center mb-4">
-                  <FileText className="h-8 w-8 text-red-400 mr-3" />
+                  <FileText className="h-8 w-8 text-[#969233] mr-3" />
                   <h3 className="text-2xl font-bold text-gray-900">Get Your Free Strategy Assessment</h3>
                 </div>
                 <p className="text-lg mb-4 text-gray-700">
                   Take our 2-minute Strategic Assessment Survey and receive a personalized strategy report tailored to your business challenges.
                 </p>
-                <Button 
-                  size="lg" 
-                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 text-lg font-semibold"
+                <Button
+                  size="lg"
+                  className="bg-[#355E3B] hover:bg-[#355E3B]/90 text-[#969233] px-8 py-3 text-lg font-semibold"
                   onClick={handleAssessmentClick}
                 >
                   Start Free Assessment Now

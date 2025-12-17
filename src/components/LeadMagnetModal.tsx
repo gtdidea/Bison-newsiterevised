@@ -465,7 +465,7 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
                 <Button
                   onClick={handleSubmit}
                   disabled={!surveyData.biggestPainPoint}
-                  className="bg-red-600 hover:bg-red-700"
+                  className="bg-[#355E3B] hover:bg-[#355E3B]/90 text-[#969233]"
                 >
                   Generate My Strategic Assessment
                 </Button>
