@@ -46,7 +46,7 @@ function generatePersonalizedInsights(data: AssessmentData): string {
   insights += "3. Establish metrics and KPIs for continuous improvement\n\n";
   
   insights += "💡 EXCLUSIVE OFFER:\n";
-  insights += "Schedule a complimentary 30-minute strategy consultation to discuss your specific challenges and opportunities.\n";
+  insights += "Schedule a complimentary 30-minute strategy consultation to discuss your specific challenges and opportunities.";
   
   return insights;
 }
@@ -135,7 +135,7 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
         `;
 
         await resend.emails.send({
-          from: 'The Bison Group <noreply@thebisongroup.io>',
+          from: 'The Bison Group <onboarding@resend.dev>',
           to: assessmentData.email,
           subject: `Your Strategic Assessment Report - ${assessmentData.company}`,
           html: userEmailHtml,
@@ -172,7 +172,7 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
         `;
 
         await resend.emails.send({
-          from: 'The Bison Group <noreply@thebisongroup.io>',
+          from: 'The Bison Group <onboarding@resend.dev>',
           to: 'info@thebisongroup.io',
           subject: `New Assessment: ${assessmentData.company} - ${assessmentData.name}`,
           html: notificationEmailHtml,
