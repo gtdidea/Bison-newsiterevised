@@ -97,10 +97,14 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
         report_content: reportContent,
       })
       .select()
-      .single();
+      .maybeSingle();
 
     if (dbError) {
       throw new Error(`Database error: ${dbError.message}`);
+    }
+
+    if (!assessment) {
+      throw new Error('Assessment was not created');
     }
 
     if (resendApiKey) {
