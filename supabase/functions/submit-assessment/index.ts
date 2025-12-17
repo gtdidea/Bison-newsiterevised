@@ -61,7 +61,7 @@ Deno.serve(async (req: Request) => {
 
   try {
     const assessmentData: AssessmentData = await req.json();
-    
+
     const insights = generatePersonalizedInsights(assessmentData);
     const reportContent = `
 STRATEGIC ASSESSMENT REPORT
@@ -77,7 +77,7 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const resendApiKey = Deno.env.get('RESEND_API_KEY')!;
+    const resendApiKey = Deno.env.get('RESEND_API_KEY');
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
@@ -103,84 +103,92 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
       throw new Error(`Database error: ${dbError.message}`);
     }
 
-    const resend = new Resend(resendApiKey);
+    if (resendApiKey) {
+      try {
+        const resend = new Resend(resendApiKey);
 
-    const userEmailHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #dc2626;">Your Strategic Assessment Report is Ready!</h1>
-        <p>Hi ${assessmentData.name},</p>
-        <p>Thank you for completing The Bison Group's Strategic Assessment. Based on your responses, we've generated personalized insights for ${assessmentData.company}.</p>
-        
-        <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h2 style="margin-top: 0;">Your Report</h2>
-          <pre style="white-space: pre-wrap; font-size: 14px;">${insights}</pre>
-        </div>
-        
-        <h3>What's Next?</h3>
-        <ul>
-          <li>Review your personalized strategic insights</li>
-          <li>Identify immediate implementation opportunities</li>
-          <li>Schedule a complimentary consultation with our team</li>
-          <li>Explore how our ICE Strategy can transform your business</li>
-        </ul>
-        
-        <p><strong>Ready to take the next step?</strong></p>
-        <p>Contact us at <a href="mailto:info@thebisongroup.io">info@thebisongroup.io</a> to schedule your complimentary 30-minute strategy consultation.</p>
-        
-        <hr style="margin: 30px 0; border: none; border-top: 1px solid #e5e7eb;" />
-        <p style="color: #6b7280; font-size: 12px;">The Bison Group | Strategic Consultancy<br/>This report was generated based on your assessment responses.</p>
-      </div>
-    `;
+        const userEmailHtml = `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h1 style="color: #dc2626;">Your Strategic Assessment Report is Ready!</h1>
+            <p>Hi ${assessmentData.name},</p>
+            <p>Thank you for completing The Bison Group's Strategic Assessment. Based on your responses, we've generated personalized insights for ${assessmentData.company}.</p>
 
-    await resend.emails.send({
-      from: 'The Bison Group <noreply@thebisongroup.io>',
-      to: assessmentData.email,
-      subject: `Your Strategic Assessment Report - ${assessmentData.company}`,
-      html: userEmailHtml,
-    });
+            <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h2 style="margin-top: 0;">Your Report</h2>
+              <pre style="white-space: pre-wrap; font-size: 14px;">${insights}</pre>
+            </div>
 
-    const notificationEmailHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #dc2626;">New Strategic Assessment Submission</h1>
-        
-        <h2>Contact Information</h2>
-        <ul>
-          <li><strong>Name:</strong> ${assessmentData.name}</li>
-          <li><strong>Email:</strong> ${assessmentData.email}</li>
-          <li><strong>Company:</strong> ${assessmentData.company}</li>
-          <li><strong>Role:</strong> ${assessmentData.role}</li>
-        </ul>
-        
-        <h2>Assessment Details</h2>
-        <ul>
-          <li><strong>Industry Challenge:</strong> ${assessmentData.industryChallenge}</li>
-          <li><strong>Strategic Priority:</strong> ${assessmentData.strategicPriority}</li>
-          <li><strong>Team Size:</strong> ${assessmentData.teamSize}</li>
-          <li><strong>Current Tools:</strong> ${assessmentData.currentTools.join(', ') || 'None selected'}</li>
-          <li><strong>Biggest Pain Point:</strong> ${assessmentData.biggestPainPoint}</li>
-        </ul>
-        
-        <h2>Generated Report</h2>
-        <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px;">
-          <pre style="white-space: pre-wrap; font-size: 14px;">${insights}</pre>
-        </div>
-        
-        <p style="margin-top: 30px;"><strong>Action Required:</strong> Follow up with this lead within 24 hours for maximum engagement.</p>
-      </div>
-    `;
+            <h3>What's Next?</h3>
+            <ul>
+              <li>Review your personalized strategic insights</li>
+              <li>Identify immediate implementation opportunities</li>
+              <li>Schedule a complimentary consultation with our team</li>
+              <li>Explore how our ICE Strategy can transform your business</li>
+            </ul>
 
-    await resend.emails.send({
-      from: 'The Bison Group <noreply@thebisongroup.io>',
-      to: 'info@thebisongroup.io',
-      subject: `New Assessment: ${assessmentData.company} - ${assessmentData.name}`,
-      html: notificationEmailHtml,
-    });
+            <p><strong>Ready to take the next step?</strong></p>
+            <p>Contact us at <a href="mailto:info@thebisongroup.io">info@thebisongroup.io</a> to schedule your complimentary 30-minute strategy consultation.</p>
+
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #e5e7eb;" />
+            <p style="color: #6b7280; font-size: 12px;">The Bison Group | Strategic Consultancy<br/>This report was generated based on your assessment responses.</p>
+          </div>
+        `;
+
+        await resend.emails.send({
+          from: 'The Bison Group <noreply@thebisongroup.io>',
+          to: assessmentData.email,
+          subject: `Your Strategic Assessment Report - ${assessmentData.company}`,
+          html: userEmailHtml,
+        });
+
+        const notificationEmailHtml = `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h1 style="color: #dc2626;">New Strategic Assessment Submission</h1>
+
+            <h2>Contact Information</h2>
+            <ul>
+              <li><strong>Name:</strong> ${assessmentData.name}</li>
+              <li><strong>Email:</strong> ${assessmentData.email}</li>
+              <li><strong>Company:</strong> ${assessmentData.company}</li>
+              <li><strong>Role:</strong> ${assessmentData.role}</li>
+            </ul>
+
+            <h2>Assessment Details</h2>
+            <ul>
+              <li><strong>Industry Challenge:</strong> ${assessmentData.industryChallenge}</li>
+              <li><strong>Strategic Priority:</strong> ${assessmentData.strategicPriority}</li>
+              <li><strong>Team Size:</strong> ${assessmentData.teamSize}</li>
+              <li><strong>Current Tools:</strong> ${assessmentData.currentTools.join(', ') || 'None selected'}</li>
+              <li><strong>Biggest Pain Point:</strong> ${assessmentData.biggestPainPoint}</li>
+            </ul>
+
+            <h2>Generated Report</h2>
+            <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px;">
+              <pre style="white-space: pre-wrap; font-size: 14px;">${insights}</pre>
+            </div>
+
+            <p style="margin-top: 30px;"><strong>Action Required:</strong> Follow up with this lead within 24 hours for maximum engagement.</p>
+          </div>
+        `;
+
+        await resend.emails.send({
+          from: 'The Bison Group <noreply@thebisongroup.io>',
+          to: 'info@thebisongroup.io',
+          subject: `New Assessment: ${assessmentData.company} - ${assessmentData.name}`,
+          html: notificationEmailHtml,
+        });
+      } catch (emailError) {
+        console.error('Email sending failed, but assessment was saved:', emailError);
+      }
+    } else {
+      console.log('RESEND_API_KEY not configured. Assessment saved but emails not sent.');
+    }
 
     return new Response(
-      JSON.stringify({ 
-        success: true, 
+      JSON.stringify({
+        success: true,
         message: 'Assessment submitted successfully',
-        assessmentId: assessment.id 
+        assessmentId: assessment.id
       }),
       {
         status: 200,
