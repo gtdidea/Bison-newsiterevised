@@ -70,10 +70,18 @@ export default function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProp
         body: JSON.stringify(surveyData),
       });
 
-      const result = await response.json();
+      const responseText = await response.text();
+
+      let result;
+      try {
+        result = responseText ? JSON.parse(responseText) : {};
+      } catch (parseError) {
+        console.error('JSON parse error:', parseError, 'Response text:', responseText);
+        throw new Error(`Invalid response from server. Status: ${response.status}`);
+      }
 
       if (!response.ok || !result.success) {
-        const errorMsg = result.error || 'Failed to submit assessment';
+        const errorMsg = result.error || `Server error (${response.status})`;
         console.error('Assessment submission error:', errorMsg);
         throw new Error(errorMsg);
       }

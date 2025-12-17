@@ -60,7 +60,26 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const assessmentData: AssessmentData = await req.json();
+    let assessmentData: AssessmentData;
+
+    try {
+      assessmentData = await req.json();
+    } catch (jsonError) {
+      console.error('Invalid JSON in request body:', jsonError);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Invalid request format'
+        }),
+        {
+          status: 400,
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+    }
 
     if (!assessmentData.name || !assessmentData.email || !assessmentData.company) {
       throw new Error('Missing required fields: name, email, or company');
@@ -208,11 +227,16 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
     );
 
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Unexpected error in submit-assessment function:', error);
+
+    const errorMessage = error instanceof Error
+      ? error.message
+      : 'An unexpected error occurred while processing your assessment';
+
     return new Response(
-      JSON.stringify({ 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Unknown error' 
+      JSON.stringify({
+        success: false,
+        error: errorMessage
       }),
       {
         status: 500,
