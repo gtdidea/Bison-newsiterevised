@@ -22,11 +22,13 @@ export default function HeroSection() {
     <>
       <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden">
         {/* Corner Banner - Fixed positioning and improved click handling */}
-        <div className="fixed top-4 right-4 z-50">
+        <div className="fixed top-20 right-4 z-[60]">
           <div className="relative">
             <button
               onClick={handleAssessmentClick}
-              className="bg-[#355E3B] text-white px-6 py-3 rounded-lg shadow-lg transform rotate-3 hover:rotate-0 transition-all duration-300 cursor-pointer border-2 border-[#969233] hover:shadow-xl active:scale-95"
+              className="bg-[#355E3B] text-white px-6 py-3 rounded-lg shadow-lg transform rotate-3 hover:rotate-0 transition-all duration-300 cursor-pointer border-2 border-[#969233] hover:shadow-xl active:scale-95 touch-manipulation"
+              type="button"
+              aria-label="Start Free Assessment"
             >
               <div className="flex items-center space-x-2">
                 <Gift className="h-4 w-4" />
@@ -34,7 +36,7 @@ export default function HeroSection() {
               </div>
               <div className="text-xs opacity-90">Click here!</div>
             </button>
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse pointer-events-none"></div>
           </div>
         </div>
 
