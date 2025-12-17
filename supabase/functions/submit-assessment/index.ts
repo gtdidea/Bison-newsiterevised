@@ -135,7 +135,7 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
         `;
 
         await resend.emails.send({
-          from: 'The Bison Group <onboarding@resend.dev>',
+          from: 'The Bison Group <noreply@thebisongroup.io>',
           to: assessmentData.email,
           subject: `Your Strategic Assessment Report - ${assessmentData.company}`,
           html: userEmailHtml,
@@ -172,7 +172,7 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
         `;
 
         await resend.emails.send({
-          from: 'The Bison Group <onboarding@resend.dev>',
+          from: 'The Bison Group <noreply@thebisongroup.io>',
           to: 'info@thebisongroup.io',
           subject: `New Assessment: ${assessmentData.company} - ${assessmentData.name}`,
           html: notificationEmailHtml,
