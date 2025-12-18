@@ -82,7 +82,19 @@ Deno.serve(async (req: Request) => {
     }
 
     if (!assessmentData.name || !assessmentData.email || !assessmentData.company) {
-      throw new Error('Missing required fields: name, email, or company');
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Missing required fields: name, email, or company'
+        }),
+        {
+          status: 400,
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
     }
 
     const insights = generatePersonalizedInsights(assessmentData);
@@ -123,11 +135,36 @@ For a comprehensive analysis, contact us at info@thebisongroup.io
       .maybeSingle();
 
     if (dbError) {
-      throw new Error(`Database error: ${dbError.message}`);
+      console.error('Database error:', dbError);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: `Database error: ${dbError.message}`
+        }),
+        {
+          status: 500,
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
     }
 
     if (!assessment) {
-      throw new Error('Assessment was not created');
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Assessment was not created'
+        }),
+        {
+          status: 500,
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
     }
 
     if (resendApiKey) {
