@@ -29,13 +29,16 @@ export default function Navigation() {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img 
-              src="/assets/bison-group-logo.png" 
-              alt="The Bison Group" 
+          <button
+            onClick={() => scrollToSection('home')}
+            className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <img
+              src="/assets/bison-group-logo.png"
+              alt="The Bison Group"
               className="h-12 w-auto"
             />
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
