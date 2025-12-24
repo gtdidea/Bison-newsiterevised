@@ -101,7 +101,7 @@ export default function Navigation() {
                 isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white hover:text-blue-200'
               }`}
             >
-              Leadership Blog
+              Leading Today
             </Link>
             <button
               onClick={() => scrollToSection('about')}
@@ -169,7 +169,7 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600"
               >
-                Leadership Blog
+                Leading Today
               </Link>
               <button
                 onClick={() => scrollToSection('about')}
