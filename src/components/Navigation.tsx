@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +18,21 @@ export default function Navigation() {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -74,7 +87,7 @@ export default function Navigation() {
             >
               AI+
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('axeus')}
               className={`font-medium transition-colors ${
                 isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white hover:text-blue-200'
@@ -82,7 +95,15 @@ export default function Navigation() {
             >
               Axeus℠
             </button>
-            <button 
+            <Link
+              to="/blog"
+              className={`font-medium transition-colors ${
+                isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white hover:text-blue-200'
+              }`}
+            >
+              Leadership Blog
+            </Link>
+            <button
               onClick={() => scrollToSection('about')}
               className={`font-medium transition-colors ${
                 isScrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white hover:text-blue-200'
@@ -137,13 +158,20 @@ export default function Navigation() {
               >
                 AI+
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection('axeus')}
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600"
               >
                 Axeus℠
               </button>
-              <button 
+              <Link
+                to="/blog"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600"
+              >
+                Leadership Blog
+              </Link>
+              <button
                 onClick={() => scrollToSection('about')}
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600"
               >
