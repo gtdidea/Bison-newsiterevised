@@ -47,7 +47,7 @@ export default function Blog() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-16">
               <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-                Leadership Blog
+                Leadership Today
               </h1>
               <p className="text-xl text-slate-600">
                 Insights and strategies for moving organizations to the next level
