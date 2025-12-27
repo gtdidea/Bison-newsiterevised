@@ -46,7 +46,7 @@ export default function Blog() {
         <section className="py-24 bg-gradient-to-br from-slate-50 to-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-16">
-              <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-bold mb-6 pb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                 Leading Today
               </h1>
               <p className="text-xl text-slate-600">
@@ -77,7 +77,7 @@ export default function Blog() {
                           {formatDate(post.published_date)}
                         </span>
                       </div>
-                      <CardTitle className="text-3xl mb-2">
+                      <CardTitle className="text-3xl mb-4 pb-2">
                         <Link
                           to={`/blog/${post.slug}`}
                           className="hover:text-blue-600 transition-colors"
@@ -86,10 +86,13 @@ export default function Blog() {
                         </Link>
                       </CardTitle>
                       {post.excerpt && (
-                        <CardDescription className="text-base text-slate-600">
+                        <CardDescription className="text-base text-slate-600 mb-2">
                           {post.excerpt}
                         </CardDescription>
                       )}
+                      <div className="text-slate-700 leading-relaxed mt-4">
+                        {post.content.split('\n\n')[0]}
+                      </div>
                     </CardHeader>
                     <CardContent>
                       <Link to={`/blog/${post.slug}`}>

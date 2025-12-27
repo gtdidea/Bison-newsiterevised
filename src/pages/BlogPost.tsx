@@ -106,7 +106,7 @@ export default function BlogPostPage() {
                   </span>
                 </div>
 
-                <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                <h1 className="text-5xl font-bold mb-6 pb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                   {post.title}
                 </h1>
 
