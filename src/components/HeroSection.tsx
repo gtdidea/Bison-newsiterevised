@@ -14,6 +14,13 @@ export default function HeroSection() {
     }
   };
 
+  const scrollToResids = () => {
+    const element = document.getElementById('resids');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const handleAssessmentClick = () => {
     setIsModalOpen(true);
   };
@@ -117,9 +124,10 @@ export default function HeroSection() {
                 Explore Our Services
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                onClick={scrollToResids}
+                variant="outline"
+                size="lg"
                 className="border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white px-8 py-3 text-lg"
               >
                 Learn About RESIDS℠
