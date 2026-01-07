@@ -132,7 +132,7 @@ export default function BlogPostPage() {
                       <Download className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-slate-900">Download the Full Report</h3>
+                      <h3 className="text-2xl font-bold text-slate-900">Download the Full Issue</h3>
                       <p className="text-slate-600">Get the complete "Leading Digital Transformation to Impact Behaviors" document</p>
                     </div>
                   </div>
