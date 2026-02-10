@@ -12,10 +12,10 @@ export default function PublicationsSection() {
       category: "AI & Innovation"
     },
     {
-      title: "The STRATEGY of Performance-driven Execution™ (PdE)—the Monograph",
+      title: "The Better-Best Team Player: Teambuilding for a New Era with AI",
       year: "2026",
-      description: "A comprehensive guide to implementing Performance-driven Execution™ (PdE) across organizations of all sizes.",
-      category: "Strategy & Execution"
+      description: "The Better-Best Team Player publication shows how to disrupt the norms and move the team to the next-level. It introduces the FAST-Galloping Team℠ as Protagonistic professionals who have different viewpoints, mindsets, and attitudes using composable (modular) applications and solutions to build strategic, operational, and business-critical functionalities. The text introduces the FIVE Team℠ System—the FAST-Galloping Team℠ Leader, the Frequent TIME℠ Strategy, the Actionable 5-Ringz℠ Strategy, the Specific FISH℠ Strategy, and the Targeted Pivotz℠ Strategy—to reflect shifting circumstances, ensuring the team stays relevant, flexible, focused, and pointed to the organization's North Star.",
+      category: "Teambuilding & AI"
     },
     {
       title: "Triplicity in the Age of AI Pocket Guide: Strategy that's DisRuptively Different Equals Innovation",

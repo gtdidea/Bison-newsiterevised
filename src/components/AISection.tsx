@@ -167,9 +167,11 @@ export default function AISection() {
             Shape the Future-Picture
           </h3>
           <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
-            Together, we can help shape the Future-Picture where intelligence is shared between people 
-            and the systems they develop by changing performance to Performance-driven Execution™ (PdE) 
-            through "The Productivity Exchange™."
+            The Triplicist℠ Service offers a digital resource that "solves problems and delivers a
+            sustainable solution." It's unique because it uses copywriting, graphic design, web and
+            App-development, SEO (Search Engine Optimization), GEO (Geographic Optimization) and AEO
+            (Answer Engine Optimization) services—all in one package, FAST. The Triplicist℠ Service
+            helps brands adapt to the AI-driven customer journey to be a part of the answer.
           </p>
           <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3">
             Start Your AI+ Journey
