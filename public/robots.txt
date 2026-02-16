@@ -1,4 +1,15 @@
+# robots.txt for The Bison Group
+# https://thebisongroup.io/robots.txt
+
 User-agent: *
 Allow: /
 
+# Disallow admin and api endpoints
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
 Sitemap: https://thebisongroup.io/sitemap.xml
+
+# Crawl-delay (optional, set to 10 seconds to be respectful)
+Crawl-delay: 10
